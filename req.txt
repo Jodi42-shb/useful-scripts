@@ -1,0 +1,7 @@
+# Python dependencies for the MozJPEG image compression script
+Pillow>=10.4.0
+mozjpeg-lossless-optimization>=1.1.2
+
+# Note: You must also install MozJPEG command-line tools separately.
+# Download MozJPEG from https://github.com/mozilla/mozjpeg/releases
+# Add cjpeg.exe to your system PATH (e.g., C:\Program Files\MozJPEG)

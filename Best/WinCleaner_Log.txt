@@ -1,0 +1,136 @@
+2025-07-17 18:56:51,528 - INFO - =============================================
+2025-07-17 18:56:51,528 - INFO - WinCleaner Script Started
+2025-07-17 18:56:51,529 - CRITICAL - Administrative privileges are required to run this script. Please re-run as Administrator.
+2025-07-17 18:58:20,982 - INFO - =============================================
+2025-07-17 18:58:20,982 - INFO - WinCleaner Script Started
+2025-07-17 18:58:20,984 - INFO - --- Starting Temporary Folders Cleanup ---
+2025-07-17 18:58:20,994 - ERROR - Could not delete file: C:\Users\Shobhit\AppData\Local\Temp\.net\Cloudflare WARP\b+yT2G4x5_4lkc1zpCCM_WY6nJfpeT4=\D3DCompiler_47_cor3.dll. Reason: [WinError 5] Access is denied: 'C:\\Users\\Shobhit\\AppData\\Local\\Temp\\.net\\Cloudflare WARP\\b+yT2G4x5_4lkc1zpCCM_WY6nJfpeT4=\\D3DCompiler_47_cor3.dll'
+2025-07-17 18:58:20,995 - INFO - Deleted file: C:\Users\Shobhit\AppData\Local\Temp\.net\Cloudflare WARP\b+yT2G4x5_4lkc1zpCCM_WY6nJfpeT4=\e_sqlite3.dll
+2025-07-17 18:58:20,996 - INFO - Deleted file: C:\Users\Shobhit\AppData\Local\Temp\.net\Cloudflare WARP\b+yT2G4x5_4lkc1zpCCM_WY6nJfpeT4=\libsodium.dll
+2025-07-17 18:58:20,997 - INFO - Deleted file: C:\Users\Shobhit\AppData\Local\Temp\.net\Cloudflare WARP\b+yT2G4x5_4lkc1zpCCM_WY6nJfpeT4=\PenImc_cor3.dll
+2025-07-17 18:58:20,997 - ERROR - Could not delete file: C:\Users\Shobhit\AppData\Local\Temp\.net\Cloudflare WARP\b+yT2G4x5_4lkc1zpCCM_WY6nJfpeT4=\PresentationNative_cor3.dll. Reason: [WinError 5] Access is denied: 'C:\\Users\\Shobhit\\AppData\\Local\\Temp\\.net\\Cloudflare WARP\\b+yT2G4x5_4lkc1zpCCM_WY6nJfpeT4=\\PresentationNative_cor3.dll'
+2025-07-17 18:58:20,998 - INFO - Deleted file: C:\Users\Shobhit\AppData\Local\Temp\.net\Cloudflare WARP\b+yT2G4x5_4lkc1zpCCM_WY6nJfpeT4=\vcruntime140_cor3.dll
+2025-07-17 18:58:20,999 - INFO - Deleted file: C:\Users\Shobhit\AppData\Local\Temp\.net\Cloudflare WARP\b+yT2G4x5_4lkc1zpCCM_WY6nJfpeT4=\WebView2Loader.dll
+2025-07-17 18:58:20,999 - ERROR - Could not delete file: C:\Users\Shobhit\AppData\Local\Temp\.net\Cloudflare WARP\b+yT2G4x5_4lkc1zpCCM_WY6nJfpeT4=\wpfgfx_cor3.dll. Reason: [WinError 5] Access is denied: 'C:\\Users\\Shobhit\\AppData\\Local\\Temp\\.net\\Cloudflare WARP\\b+yT2G4x5_4lkc1zpCCM_WY6nJfpeT4=\\wpfgfx_cor3.dll'
+2025-07-17 18:58:21,000 - INFO - Deleted file: C:\Users\Shobhit\AppData\Local\Temp\iu-14D2N.tmp\_unins.tmp
+2025-07-17 18:58:21,001 - INFO - Deleted empty directory: C:\Users\Shobhit\AppData\Local\Temp\chrome_url_fetcher_18904_1120563998
+2025-07-17 18:58:21,001 - INFO - Deleted empty directory: C:\Users\Shobhit\AppData\Local\Temp\chrome_url_fetcher_18904_2083247224
+2025-07-17 18:58:21,001 - INFO - Deleted empty directory: C:\Users\Shobhit\AppData\Local\Temp\chrome_url_fetcher_18904_2137725441
+2025-07-17 18:58:21,002 - INFO - Deleted empty directory: C:\Users\Shobhit\AppData\Local\Temp\chrome_url_fetcher_18904_482810777
+2025-07-17 18:58:21,002 - INFO - Deleted empty directory: C:\Users\Shobhit\AppData\Local\Temp\iu-14D2N.tmp
+2025-07-17 18:58:21,002 - INFO - Deleted empty directory: C:\Users\Shobhit\AppData\Local\Temp\WinGet
+2025-07-17 18:58:21,006 - INFO - Deleted file: C:\WINDOWS\Temp\.ses
+2025-07-17 18:58:21,007 - INFO - Deleted file: C:\WINDOWS\Temp\CABA940.tmp
+2025-07-17 18:58:21,008 - INFO - Deleted file: C:\WINDOWS\Temp\CABA941.tmp
+2025-07-17 18:58:21,010 - INFO - Deleted file: C:\WINDOWS\Temp\CABA942.tmp
+2025-07-17 18:58:21,010 - INFO - Deleted file: C:\WINDOWS\Temp\CABA943.tmp
+2025-07-17 18:58:21,011 - INFO - Deleted file: C:\WINDOWS\Temp\CABA944.tmp
+2025-07-17 18:58:21,011 - INFO - Deleted file: C:\WINDOWS\Temp\CABAE08.tmp
+2025-07-17 18:58:21,012 - INFO - Deleted file: C:\WINDOWS\Temp\CABAE09.tmp
+2025-07-17 18:58:21,012 - INFO - Deleted file: C:\WINDOWS\Temp\CABB0F8.tmp
+2025-07-17 18:58:21,013 - INFO - Deleted file: C:\WINDOWS\Temp\CABB0F9.tmp
+2025-07-17 18:58:21,013 - INFO - Deleted file: C:\WINDOWS\Temp\CABB37B.tmp
+2025-07-17 18:58:21,014 - INFO - Deleted file: C:\WINDOWS\Temp\CABB37C.tmp
+2025-07-17 18:58:21,014 - INFO - Deleted file: C:\WINDOWS\Temp\CABB63C.tmp
+2025-07-17 18:58:21,015 - INFO - Deleted file: C:\WINDOWS\Temp\CABB63D.tmp
+2025-07-17 18:58:21,015 - INFO - Deleted file: C:\WINDOWS\Temp\CABB748.tmp
+2025-07-17 18:58:21,016 - INFO - Deleted file: C:\WINDOWS\Temp\CABB749.tmp
+2025-07-17 18:58:21,016 - INFO - Deleted file: C:\WINDOWS\Temp\CABB759.tmp
+2025-07-17 18:58:21,016 - INFO - Deleted file: C:\WINDOWS\Temp\CABB75A.tmp
+2025-07-17 18:58:21,017 - INFO - Deleted file: C:\WINDOWS\Temp\CABB75B.tmp
+2025-07-17 18:58:21,018 - INFO - Deleted file: C:\WINDOWS\Temp\LAPTOP-SHOBHIT-20250712-0134.log
+2025-07-17 18:58:21,018 - INFO - Deleted file: C:\WINDOWS\Temp\LAPTOP-SHOBHIT-20250712-0138.log
+2025-07-17 18:58:21,019 - INFO - Deleted file: C:\WINDOWS\Temp\LAPTOP-SHOBHIT-20250712-0139.log
+2025-07-17 18:58:21,020 - INFO - Deleted file: C:\WINDOWS\Temp\LAPTOP-SHOBHIT-20250712-0140.log
+2025-07-17 18:58:21,020 - INFO - Deleted file: C:\WINDOWS\Temp\LAPTOP-SHOBHIT-20250712-0140a.log
+2025-07-17 18:58:21,021 - INFO - Deleted file: C:\WINDOWS\Temp\LAPTOP-SHOBHIT-20250712-1147.log
+2025-07-17 18:58:21,022 - INFO - Deleted file: C:\WINDOWS\Temp\LAPTOP-SHOBHIT-20250712-1152.log
+2025-07-17 18:58:21,022 - INFO - Deleted file: C:\WINDOWS\Temp\LAPTOP-SHOBHIT-20250712-1152a.log
+2025-07-17 18:58:21,023 - INFO - Deleted file: C:\WINDOWS\Temp\LAPTOP-SHOBHIT-20250712-1152b.log
+2025-07-17 18:58:21,024 - INFO - Deleted file: C:\WINDOWS\Temp\LAPTOP-SHOBHIT-20250712-1152c.log
+2025-07-17 18:58:21,025 - INFO - Deleted file: C:\WINDOWS\Temp\LAPTOP-SHOBHIT-20250712-1229.log
+2025-07-17 18:58:21,026 - INFO - Deleted file: C:\WINDOWS\Temp\LAPTOP-SHOBHIT-20250712-1235.log
+2025-07-17 18:58:21,026 - INFO - Deleted file: C:\WINDOWS\Temp\LAPTOP-SHOBHIT-20250712-1339.log
+2025-07-17 18:58:21,027 - INFO - Deleted file: C:\WINDOWS\Temp\LAPTOP-SHOBHIT-20250712-1350.log
+2025-07-17 18:58:21,028 - INFO - Deleted file: C:\WINDOWS\Temp\LAPTOP-SHOBHIT-20250712-1407.log
+2025-07-17 18:58:21,028 - INFO - Deleted file: C:\WINDOWS\Temp\LAPTOP-SHOBHIT-20250712-1556.log
+2025-07-17 18:58:21,028 - INFO - Deleted file: C:\WINDOWS\Temp\LAPTOP-SHOBHIT-20250712-1727.log
+2025-07-17 18:58:21,029 - INFO - Deleted file: C:\WINDOWS\Temp\LAPTOP-SHOBHIT-20250712-1732.log
+2025-07-17 18:58:21,030 - INFO - Deleted file: C:\WINDOWS\Temp\LAPTOP-SHOBHIT-20250712-1903.log
+2025-07-17 18:58:21,031 - INFO - Deleted file: C:\WINDOWS\Temp\LAPTOP-SHOBHIT-20250712-2119.log
+2025-07-17 18:58:21,032 - INFO - Deleted file: C:\WINDOWS\Temp\LAPTOP-SHOBHIT-20250712-2223.log
+2025-07-17 18:58:21,032 - INFO - Deleted file: C:\WINDOWS\Temp\LAPTOP-SHOBHIT-20250712-2239.log
+2025-07-17 18:58:21,033 - INFO - Deleted file: C:\WINDOWS\Temp\LAPTOP-SHOBHIT-20250712-2242.log
+2025-07-17 18:58:21,033 - INFO - Deleted file: C:\WINDOWS\Temp\LAPTOP-SHOBHIT-20250712-2304.log
+2025-07-17 18:58:21,034 - INFO - Deleted file: C:\WINDOWS\Temp\LAPTOP-SHOBHIT-20250712-2309.log
+2025-07-17 18:58:21,034 - INFO - Deleted file: C:\WINDOWS\Temp\LAPTOP-SHOBHIT-20250712-2317.log
+2025-07-17 18:58:21,035 - INFO - Deleted file: C:\WINDOWS\Temp\LAPTOP-SHOBHIT-20250713-0335.log
+2025-07-17 18:58:21,035 - INFO - Deleted file: C:\WINDOWS\Temp\LAPTOP-SHOBHIT-20250713-0400.log
+2025-07-17 18:58:21,036 - INFO - Deleted file: C:\WINDOWS\Temp\LAPTOP-SHOBHIT-20250713-0413.log
+2025-07-17 18:58:21,037 - INFO - Deleted file: C:\WINDOWS\Temp\LAPTOP-SHOBHIT-20250714-1730.log
+2025-07-17 18:58:21,037 - INFO - Deleted file: C:\WINDOWS\Temp\LAPTOP-SHOBHIT-20250714-1735.log
+2025-07-17 18:58:21,038 - INFO - Deleted file: C:\WINDOWS\Temp\LAPTOP-SHOBHIT-20250714-1738.log
+2025-07-17 18:58:21,038 - INFO - Deleted file: C:\WINDOWS\Temp\LAPTOP-SHOBHIT-20250714-1738a.log
+2025-07-17 18:58:21,039 - INFO - Deleted file: C:\WINDOWS\Temp\LAPTOP-SHOBHIT-20250714-1743.log
+2025-07-17 18:58:21,040 - INFO - Deleted file: C:\WINDOWS\Temp\LAPTOP-SHOBHIT-20250714-1905.log
+2025-07-17 18:58:21,040 - INFO - Deleted file: C:\WINDOWS\Temp\LAPTOP-SHOBHIT-20250714-1905a.log
+2025-07-17 18:58:21,041 - INFO - Deleted file: C:\WINDOWS\Temp\LAPTOP-SHOBHIT-20250715-1409.log
+2025-07-17 18:58:21,042 - INFO - Deleted file: C:\WINDOWS\Temp\LAPTOP-SHOBHIT-20250715-1415.log
+2025-07-17 18:58:21,043 - INFO - Deleted file: C:\WINDOWS\Temp\LAPTOP-SHOBHIT-20250715-1415a.log
+2025-07-17 18:58:21,044 - INFO - Deleted file: C:\WINDOWS\Temp\LAPTOP-SHOBHIT-20250715-1454.log
+2025-07-17 18:58:21,044 - INFO - Deleted file: C:\WINDOWS\Temp\LAPTOP-SHOBHIT-20250715-1614.log
+2025-07-17 18:58:21,045 - INFO - Deleted file: C:\WINDOWS\Temp\LAPTOP-SHOBHIT-20250715-1658.log
+2025-07-17 18:58:21,046 - INFO - Deleted file: C:\WINDOWS\Temp\LAPTOP-SHOBHIT-20250715-1709.log
+2025-07-17 18:58:21,049 - INFO - Deleted file: C:\WINDOWS\Temp\lx7BD3.tmp
+2025-07-17 18:58:21,049 - INFO - Deleted file: C:\WINDOWS\Temp\Microsoft-Windows-AppXDeploymentServer-Operational.evtx
+2025-07-17 18:58:21,050 - INFO - Deleted file: C:\WINDOWS\Temp\Microsoft-Windows-Store-Operational.evtx
+2025-07-17 18:58:21,051 - INFO - Deleted file: C:\WINDOWS\Temp\Microsoft-Windows-TWinUI-Operational.evtx
+2025-07-17 18:58:21,052 - INFO - Deleted file: C:\WINDOWS\Temp\Microsoft-Windows-WindowsUpdateClient-Operational.evtx
+2025-07-17 18:58:21,052 - INFO - Deleted file: C:\WINDOWS\Temp\msedge_installer.log
+2025-07-17 18:58:21,053 - INFO - Deleted file: C:\WINDOWS\Temp\nso1D44.tmp
+2025-07-17 18:58:21,053 - INFO - Deleted file: C:\WINDOWS\Temp\nszF7BA.tmp
+2025-07-17 18:58:21,054 - INFO - Deleted file: C:\WINDOWS\Temp\Setup_20250712014236.log
+2025-07-17 18:58:21,055 - INFO - Deleted file: C:\WINDOWS\Temp\wct104.tmp
+2025-07-17 18:58:21,055 - INFO - Deleted file: C:\WINDOWS\Temp\wct3B04.tmp
+2025-07-17 18:58:21,056 - INFO - Deleted file: C:\WINDOWS\Temp\wct699.tmp
+2025-07-17 18:58:21,056 - INFO - Deleted file: C:\WINDOWS\Temp\wct7676.tmp
+2025-07-17 18:58:21,056 - INFO - Deleted file: C:\WINDOWS\Temp\wct7E48.tmp
+2025-07-17 18:58:21,057 - INFO - Deleted file: C:\WINDOWS\Temp\wctE82D.tmp
+2025-07-17 18:58:21,057 - INFO - Deleted file: C:\WINDOWS\Temp\wctEFB1.tmp
+2025-07-17 18:58:21,058 - INFO - Deleted file: C:\WINDOWS\Temp\wctF213.tmp
+2025-07-17 18:58:21,059 - INFO - Deleted file: C:\WINDOWS\Temp\wctF632.tmp
+2025-07-17 18:58:21,059 - INFO - Deleted file: C:\WINDOWS\Temp\wctFE81.tmp
+2025-07-17 18:58:21,060 - INFO - Deleted file: C:\WINDOWS\Temp\WSMonitor.log
+2025-07-17 18:58:21,060 - INFO - Deleted file: C:\WINDOWS\Temp\wsu61AF.tmp
+2025-07-17 18:58:21,061 - INFO - Deleted file: C:\WINDOWS\Temp\{12EB21B9-AAE0-4ED0-BAD5-8721706EB8E9} - OProcSessId.dat
+2025-07-17 18:58:21,061 - INFO - Deleted file: C:\WINDOWS\Temp\{90C5818B-E5E5-43BF-BADE-12EB0A3A973E} - OProcSessId.dat
+2025-07-17 18:58:21,062 - INFO - Deleted file: C:\WINDOWS\Temp\{BA2BB40E-3C9E-4D9C-ABF6-FDE1C5468F5E} - OProcSessId.dat
+2025-07-17 18:58:21,062 - INFO - Deleted file: C:\WINDOWS\Temp\{F3060F1A-71AF-46D5-9D4F-C45F27EC250A} - OProcSessId.dat
+2025-07-17 18:58:21,063 - INFO - Deleted file: C:\WINDOWS\Temp\{F829DD9E-FA7D-4188-AEB5-7F815743FC44} - OProcSessId.dat
+2025-07-17 18:58:21,064 - INFO - Deleted file: C:\WINDOWS\Temp\Crashpad\metadata
+2025-07-17 18:58:21,064 - INFO - Deleted file: C:\WINDOWS\Temp\Crashpad\settings.dat
+2025-07-17 18:58:21,066 - INFO - Deleted file: C:\WINDOWS\Temp\MsEdgeCrashpad\metadata
+2025-07-17 18:58:21,066 - INFO - Deleted file: C:\WINDOWS\Temp\MsEdgeCrashpad\settings.dat
+2025-07-17 18:58:21,067 - INFO - Deleted file: C:\WINDOWS\Temp\MsEdgeCrashpad\throttle_store.dat
+2025-07-17 18:58:21,069 - INFO - Deleted file: C:\WINDOWS\Temp\nsd2CCE.tmp\nsExec.dll
+2025-07-17 18:58:21,069 - INFO - Deleted file: C:\WINDOWS\Temp\nsd2CCE.tmp\System.dll
+2025-07-17 18:58:21,070 - INFO - Deleted empty directory: C:\WINDOWS\Temp\Crashpad\attachments
+2025-07-17 18:58:21,071 - INFO - Deleted empty directory: C:\WINDOWS\Temp\Crashpad\reports
+2025-07-17 18:58:21,071 - INFO - Deleted empty directory: C:\WINDOWS\Temp\Crashpad
+2025-07-17 18:58:21,071 - INFO - Deleted empty directory: C:\WINDOWS\Temp\DiagOutputDir
+2025-07-17 18:58:21,072 - INFO - Deleted empty directory: C:\WINDOWS\Temp\MsEdgeCrashpad\attachments
+2025-07-17 18:58:21,072 - INFO - Deleted empty directory: C:\WINDOWS\Temp\MsEdgeCrashpad\reports
+2025-07-17 18:58:21,072 - INFO - Deleted empty directory: C:\WINDOWS\Temp\MsEdgeCrashpad
+2025-07-17 18:58:21,073 - INFO - Deleted empty directory: C:\WINDOWS\Temp\nsd2CCE.tmp
+2025-07-17 18:58:21,073 - INFO - --- Finished Temporary Folders Cleanup ---
+2025-07-17 18:58:21,073 - INFO - --- Starting Windows Update Cache Cleanup ---
+2025-07-17 18:58:21,107 - ERROR - Failed to stop a service. Command: '['net', 'stop', 'wuauserv']'. Error: The Windows Update service is not started.
+
+More help is available by typing NET HELPMSG 3521.
+2025-07-17 18:58:23,166 - INFO - Service 'wuauserv' started successfully.
+2025-07-17 18:58:27,736 - INFO - Service 'bits' started successfully.
+2025-07-17 18:58:27,736 - INFO - --- Finished Windows Update Cache Cleanup ---
+2025-07-17 18:58:27,736 - WARNING - Winshell library not found. Skipping Recycle Bin cleanup.
+2025-07-17 18:58:27,738 - INFO - Cleanup finished. Total space freed: 133.93 MB. Items skipped: 31.
+2025-07-17 18:58:27,738 - INFO - =============================================
+
