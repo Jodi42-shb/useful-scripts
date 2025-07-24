@@ -1,6 +1,24 @@
-*.mkv 
-*.mp4 
-*.ico 
-*.png 
-*.html
-restore
+# Ignore media and binary files
+*.mkv
+*.png
+*.ico
+
+# Ignore system files
+desktop.ini
+
+# Ignore log files
+*.log
+
+# Ignore backup files (optional, if you don't want to track them)
+backup_*.json
+
+# Ignore other unwanted files
+output2.mkv
+
+# Track everything else (code, scripts, text, configs, etc.)
+!*.py
+!*.ps1
+!*.txt
+!*.json
+!*.html
+!*.conf
