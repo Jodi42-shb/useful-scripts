@@ -67,18 +67,48 @@ function Delete-FileSafe($file, $toRecycleBin) {
     }
 }
 
+function Handle-DuplicateGroup($files, $groupType, $groupKey) {
+    Write-Host "`n$groupType duplicate group ($groupKey):" -ForegroundColor Green
+    for ($i=0; $i -lt $files.Count; $i++) {
+        Write-Host ("[{0}] {1}" -f $i, $files[$i]) -ForegroundColor Yellow
+    }
+    if ($postAction -eq '1') { return }
+    $toAct = Read-Host "Enter comma-separated numbers of files to act on (leave blank to skip)"
+    if ([string]::IsNullOrWhiteSpace($toAct)) { return }
+    $indices = $toAct -split ',' | ForEach-Object { $_.Trim() } | Where-Object { $_ -match '^[0-9]+$' } | ForEach-Object { [int]$_ }
+    foreach ($idx in $indices) {
+        if ($idx -ge 0 -and $idx -lt $files.Count) {
+            $file = $files[$idx]
+            if ($postAction -eq '2') {
+                Move-FileSafe $file $moveDir
+            } elseif ($postAction -eq '3') {
+                Delete-FileSafe $file ($deleteMode -eq '1')
+            }
+        }
+    }
+}
+
 if ($method -eq '1' -or $method -eq '3') {
     Write-Host "\n[Hash-based duplicate search]" -ForegroundColor Cyan
     $hashTable = @{}
     Get-ChildItem -Path $folder -Recurse -File -ErrorAction SilentlyContinue | ForEach-Object {
+        $filePath = $_.FullName
         try {
-            $hash = (Get-FileHash $_.FullName -Algorithm SHA256).Hash
-            if ($hashTable.ContainsKey($hash)) {
-                $hashTable[$hash] += $_.FullName
+            $hashObj = Get-FileHash $filePath -Algorithm SHA256
+            $hash = $hashObj.Hash
+            if ($null -ne $hash) {
+                if ($hashTable.ContainsKey($hash)) {
+                    $hashTable[$hash] += $filePath
+                } else {
+                    $hashTable[$hash] = @($filePath)
+                }
             } else {
-                $hashTable[$hash] = @($_.FullName)
+                Write-Host "[WARNING] Could not hash (null hash): $filePath" -ForegroundColor Red
+                Write-Host "  [DEBUG] Get-FileHash returned: $($hashObj | Out-String)" -ForegroundColor DarkGray
             }
-        } catch {}
+        } catch {
+            Write-Host "[WARNING] Could not hash: $filePath - $($_.Exception.Message)" -ForegroundColor Red
+        }
     }
     foreach ($hash in $hashTable.Keys) {
         $files = $hashTable[$hash]
