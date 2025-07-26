@@ -8,21 +8,37 @@ if (-not (Test-Path $folder)) {
     exit
 }
 
-# Prompt for method
+# Prompt for method, with validation
 Write-Host "Choose duplicate detection method:" -ForegroundColor Cyan
 Write-Host "1. Hash (file content)" -ForegroundColor Yellow
 Write-Host "2. Filename (name only)" -ForegroundColor Yellow
 Write-Host "3. Both" -ForegroundColor Yellow
-$method = Read-Host "Enter 1, 2, or 3"
+$method = $null
+while ($null -eq $method) {
+    $inputMethod = Read-Host "Enter 1, 2, or 3"
+    if ($inputMethod -in @('1','2','3')) {
+        $method = $inputMethod
+    } else {
+        Write-Host "Invalid input. Please enter 1, 2, or 3." -ForegroundColor Red
+    }
+}
 
 $results = @()
 
-# Ask for post-processing options
-Write-Host "\nWhat do you want to do with found duplicates?" -ForegroundColor Cyan
+# Ask for post-processing options, with validation
+Write-Host "`nWhat do you want to do with found duplicates?" -ForegroundColor Cyan
 Write-Host "1. Just report (no action)" -ForegroundColor Yellow
 Write-Host "2. Move selected duplicates to a directory" -ForegroundColor Yellow
 Write-Host "3. Delete selected duplicates (choose Recycle Bin or permanent)" -ForegroundColor Yellow
-$postAction = Read-Host "Enter 1, 2, or 3"
+$postAction = $null
+while ($null -eq $postAction) {
+    $inputAction = Read-Host "Enter 1, 2, or 3"
+    if ($inputAction -in @('1','2','3')) {
+        $postAction = $inputAction
+    } else {
+        Write-Host "Invalid input. Please enter 1, 2, or 3." -ForegroundColor Red
+    }
+}
 
 $moveDir = $null
 $deleteMode = $null
@@ -37,16 +53,31 @@ if ($postAction -eq '3') {
     Write-Host "Delete mode:" -ForegroundColor Cyan
     Write-Host "1. Send to Recycle Bin" -ForegroundColor Yellow
     Write-Host "2. Permanently delete" -ForegroundColor Yellow
-    $deleteMode = Read-Host "Enter 1 or 2"
+    $deleteMode = $null
+    while ($null -eq $deleteMode) {
+        $inputDelete = Read-Host "Enter 1 or 2"
+        if ($inputDelete -in @('1','2')) {
+            $deleteMode = $inputDelete
+        } else {
+            Write-Host "Invalid input. Please enter 1 or 2." -ForegroundColor Red
+        }
+    }
 }
 
 function Move-FileSafe($file, $destDir) {
     try {
+        $baseName = [System.IO.Path]::GetFileNameWithoutExtension($file)
+        $ext = [System.IO.Path]::GetExtension($file)
         $dest = Join-Path $destDir (Split-Path $file -Leaf)
+        $counter = 1
+        while (Test-Path $dest) {
+            $dest = Join-Path $destDir ("{0}_dup{1}{2}" -f $baseName, $counter, $ext)
+            $counter++
+        }
         Move-Item -Path $file -Destination $dest -Force
         Write-Host "Moved: $file -> $dest" -ForegroundColor Yellow
     } catch {
-        Write-Host "Could not move: $file" -ForegroundColor Red
+        Write-Host "Could not move: $file ($($_.Exception.Message))" -ForegroundColor Red
     }
 }
 
@@ -56,14 +87,18 @@ function Delete-FileSafe($file, $toRecycleBin) {
             $shell = New-Object -ComObject Shell.Application
             $folder = Split-Path $file
             $item = $shell.Namespace($folder).ParseName((Split-Path $file -Leaf))
-            $item.InvokeVerb('delete')
-            Write-Host "Sent to Recycle Bin: $file" -ForegroundColor Yellow
+            if ($item) {
+                $item.InvokeVerb('delete')
+                Write-Host "Sent to Recycle Bin: $file" -ForegroundColor Yellow
+            } else {
+                Write-Host "[WARNING] Could not send to Recycle Bin (item not found): $file" -ForegroundColor Red
+            }
         } else {
             Remove-Item $file -Force
             Write-Host "Permanently deleted: $file" -ForegroundColor Yellow
         }
     } catch {
-        Write-Host "Could not delete: $file" -ForegroundColor Red
+        Write-Host "Could not delete: $file ($($_.Exception.Message))" -ForegroundColor Red
     }
 }
 
@@ -76,6 +111,7 @@ function Handle-DuplicateGroup($files, $groupType, $groupKey) {
     $toAct = Read-Host "Enter comma-separated numbers of files to act on (leave blank to skip)"
     if ([string]::IsNullOrWhiteSpace($toAct)) { return }
     $indices = $toAct -split ',' | ForEach-Object { $_.Trim() } | Where-Object { $_ -match '^[0-9]+$' } | ForEach-Object { [int]$_ }
+    if ($indices.Count -eq 0) { return }
     foreach ($idx in $indices) {
         if ($idx -ge 0 -and $idx -lt $files.Count) {
             $file = $files[$idx]
@@ -89,7 +125,7 @@ function Handle-DuplicateGroup($files, $groupType, $groupKey) {
 }
 
 if ($method -eq '1' -or $method -eq '3') {
-    Write-Host "\n[Hash-based duplicate search]" -ForegroundColor Cyan
+    Write-Host "`n[Hash-based duplicate search]" -ForegroundColor Cyan
     $hashTable = @{}
     Get-ChildItem -Path $folder -Recurse -File -ErrorAction SilentlyContinue | ForEach-Object {
         $filePath = $_.FullName
@@ -114,13 +150,13 @@ if ($method -eq '1' -or $method -eq '3') {
         $files = $hashTable[$hash]
         if ($files.Count -gt 1) {
             Handle-DuplicateGroup $files 'Hash' $hash
-            $results += [PSCustomObject]@{Type='Hash'; Hash=$hash; Files=($files -join '; ')}
+            $results += [PSCustomObject]@{Type='Hash'; Key=$hash; Files=($files -join '; ')}
         }
     }
 }
 
 if ($method -eq '2' -or $method -eq '3') {
-    Write-Host "\n[Filename-based duplicate search]" -ForegroundColor Cyan
+    Write-Host "`n[Filename-based duplicate search]" -ForegroundColor Cyan
     $nameTable = @{}
     Get-ChildItem -Path $folder -Recurse -File -ErrorAction SilentlyContinue | ForEach-Object {
         $name = $_.Name
@@ -134,7 +170,7 @@ if ($method -eq '2' -or $method -eq '3') {
         $files = $nameTable[$name]
         if ($files.Count -gt 1) {
             Handle-DuplicateGroup $files 'Name' $name
-            $results += [PSCustomObject]@{Type='Name'; Hash=$name; Files=($files -join '; ')}
+            $results += [PSCustomObject]@{Type='Name'; Key=$name; Files=($files -join '; ')}
         }
     }
 }
@@ -143,7 +179,7 @@ if ($method -eq '2' -or $method -eq '3') {
 if ($results.Count -gt 0) {
     $outFile = Join-Path $folder "duplicate_report_$(Get-Date -Format 'yyyyMMdd_HHmmss').csv"
     $results | Export-Csv -Path $outFile -NoTypeInformation -Encoding UTF8
-    Write-Host "\nDuplicate report saved to: $outFile" -ForegroundColor Cyan
+    Write-Host "`nDuplicate report saved to: $outFile" -ForegroundColor Cyan
 } else {
-    Write-Host "\nNo duplicates found." -ForegroundColor Green
-} 
+    Write-Host "`nNo duplicates found." -ForegroundColor Green
+}
