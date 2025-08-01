@@ -29,7 +29,7 @@ else {
         # Get the current script path or current working directory
         $workingDir = Get-Location | Select-Object -ExpandProperty Path
         # Relaunch PowerShell as Administrator in the same directory using -WindowStyle Hidden to avoid flashing
-        Start-Process -FilePath "powershell.exe" -Verb RunAs -ArgumentList "-NoProfile -ExecutionPolicy Bypass -NoExit -Command `"Set-Location -LiteralPath '$workingDir'`""
+        Start-Process -FilePath "pwsh.exe" -Verb RunAs -ArgumentList "-NoProfile -ExecutionPolicy Bypass -NoExit -Command `"Set-Location -LiteralPath '$workingDir'`""
         exit
     }
     catch {
