@@ -1,6 +1,7 @@
 function Move-SubfolderContents {
     param (
-        [string]$SourceFolder
+        [string]$SourceFolder,
+        [string[]]$ExceptionFolders = @()
     )
 
     if (-not (Test-Path $SourceFolder -PathType Container)) {
@@ -11,9 +12,26 @@ function Move-SubfolderContents {
     $destinationFolder = Get-Location
 
     Write-Host "Moving contents from subfolders of '$SourceFolder' to '$destinationFolder'..." -ForegroundColor Cyan
+    
+    # Get all subfolders and filter out exceptions
+    $subfolders = Get-ChildItem -Path $SourceFolder -Directory
+    
+    # Convert exception folder names to hashtable for faster lookup
+    $exceptionLookup = @{}
+    foreach ($exception in $ExceptionFolders) {
+        $exceptionLookup[$exception.ToLower()] = $true
+    }
 
-    Get-ChildItem -Path $SourceFolder -Directory | ForEach-Object {
+    $subfolders | ForEach-Object {
         $subfolder = $_
+        $subfolderName = $subfolder.Name
+        
+        # Check if this folder is in the exception list
+        if ($exceptionLookup.ContainsKey($subfolderName.ToLower())) {
+            Write-Host "Skipping exception folder: $($subfolder.FullName)" -ForegroundColor Yellow
+            return
+        }
+        
         Write-Host "Processing subfolder: $($subfolder.FullName)" -ForegroundColor Green
         Get-ChildItem -Path $subfolder.FullName | ForEach-Object {
             $item = $_
@@ -32,6 +50,7 @@ function Move-SubfolderContents {
 
 # Main script execution
 Write-Host "This script will move all contents from subfolders into the current directory." -ForegroundColor Yellow
+Write-Host "Exception folders will be skipped during the operation." -ForegroundColor Yellow
 
 $initialDirectory = Get-Location
 $selectedFolder = Read-Host "Enter the path to the folder (e.g., C:\MyFolder) or press Enter for current directory: "
@@ -49,11 +68,29 @@ if (-not (Test-Path $sourceFolder -PathType Container)) {
     exit
 }
 
+# Get exception folders
+$exceptionFolders = @()
+Write-Host "`nEnter exception folder names (one per line). Press Enter twice when done:" -ForegroundColor Cyan
+while ($true) {
+    $exceptionFolder = Read-Host "Exception folder name"
+    if ([string]::IsNullOrWhiteSpace($exceptionFolder)) {
+        break
+    }
+    $exceptionFolders += $exceptionFolder.Trim()
+}
+
+if ($exceptionFolders.Count -gt 0) {
+    Write-Host "`nException folders to skip:" -ForegroundColor Yellow
+    $exceptionFolders | ForEach-Object { Write-Host "  - $_" -ForegroundColor Yellow }
+} else {
+    Write-Host "`nNo exception folders specified." -ForegroundColor Gray
+}
+
 Write-Host "`nSelected folder for operation: '$sourceFolder'" -ForegroundColor Cyan
 $confirm = Read-Host "Are you sure you want to proceed? This will move all files/folders from subdirectories of '$sourceFolder' to '$($initialDirectory.Path)' (Y/N): "
 
 if ($confirm -eq 'Y' -or $confirm -eq 'y') {
-    Move-SubfolderContents -SourceFolder $sourceFolder
+    Move-SubfolderContents -SourceFolder $sourceFolder -ExceptionFolders $exceptionFolders
     
     # Ask if user wants to delete empty folders
     Write-Host "`n" -NoNewline
@@ -62,8 +99,23 @@ if ($confirm -eq 'Y' -or $confirm -eq 'y') {
     if ($deleteEmpty -eq 'Y' -or $deleteEmpty -eq 'y') {
         Write-Host "Deleting empty subfolders..." -ForegroundColor Cyan
         
-        Get-ChildItem -Path $sourceFolder -Directory | ForEach-Object {
+        # Get all subfolders again, excluding exceptions
+        $subfolders = Get-ChildItem -Path $sourceFolder -Directory
+        $exceptionLookup = @{}
+        foreach ($exception in $exceptionFolders) {
+            $exceptionLookup[$exception.ToLower()] = $true
+        }
+        
+        $subfolders | ForEach-Object {
             $subfolder = $_
+            $subfolderName = $subfolder.Name
+            
+            # Skip exception folders
+            if ($exceptionLookup.ContainsKey($subfolderName.ToLower())) {
+                Write-Host "Skipping exception folder from deletion: $($subfolder.Name)" -ForegroundColor Yellow
+                return
+            }
+            
             # Check if folder is empty
             $items = Get-ChildItem -Path $subfolder.FullName -Force
             if ($items.Count -eq 0) {
