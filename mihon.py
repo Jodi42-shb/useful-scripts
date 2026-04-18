@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 # Copied from file mihon6.py
 import logging
 import os

@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 # WinCleaner.py
 # A Comprehensive and Transparent Windows System Cleanup Utility (v3 - Corrected)
 

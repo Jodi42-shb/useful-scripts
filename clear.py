@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 # python:_package_and_system_cleanup_windows
 import os
 import subprocess

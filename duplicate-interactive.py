@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import os
 import hashlib
 from send2trash import send2trash
