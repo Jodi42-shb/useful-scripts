@@ -22,3 +22,8 @@ output2.mkv
 !*.json
 !*.html
 !*.conf
+/__pycache__
+/The.Boys.1962.dvb.NiX.Eng.srt
+
+*.srt
+.venv/
